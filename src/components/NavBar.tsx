@@ -8,23 +8,38 @@ const Header = styled("header", {
   backgroundColor: "$deepblack900",
   alignItems: "center",
   boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+  zIndex: "10",
 });
 
 const Logo = styled("a", {
-  marginRight: "$20",
-  height: "$12",
+  height: "$16",
   width: "auto",
 });
 
 const List = styled("ul", {
   display: "flex",
-  gap: "$32",
+  gap: "$8",
   color: "white",
+  "@tablet": {
+    gap: "$12",
+  },
+  "@laptop": {
+    gap: "$24",
+  },
+  "@desktop": {
+    gap: "$32",
+  },
 });
 
 const ListLink = styled("a", {
-  fontSize: "xx-large",
-  padding: "$4 $6",
+  fontSize: "x-large",
+  fontFamily: '"Roboto", sans-serif',
+  fontWeight: "500",
+  padding: "$2",
+  "@desktop": {
+    padding: "$4 $6",
+    fontSize: "xx-large",
+  },
 });
 
 const NavBar = () => {
@@ -40,15 +55,17 @@ const NavBar = () => {
       <Logo href="#">
         <img className="image" src={logo} alt="sport see logo" />
       </Logo>
-      <List>
-        {navlinks.map((link, i) => {
-          return (
-            <li key={i}>
-              <ListLink href={link.href}>{link.name}</ListLink>
-            </li>
-          );
-        })}
-      </List>
+      <nav>
+        <List>
+          {navlinks.map((link, i) => {
+            return (
+              <li key={i}>
+                <ListLink href={link.href}>{link.name}</ListLink>
+              </li>
+            );
+          })}
+        </List>
+      </nav>
     </Header>
   );
 };

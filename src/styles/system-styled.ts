@@ -50,10 +50,37 @@ const colors = {
   deepblack900: "#020203",
 };
 
+const radii = {
+  none: "0",
+  sm: "0.125rem",
+  base: "0.25rem",
+  md: "0.375rem",
+  lg: "0.5rem",
+  xl: "0.75rem",
+  "2xl": "1rem",
+  "3xl": "1.5rem",
+  "4xl": "2rem",
+  "5xl": "2.5rem",
+  "6xl": "3rem",
+  "7xl": "3.5rem",
+  "8xl": "4rem",
+  "9xl": "4.5rem",
+  full: "9999px",
+};
+
+const media = {
+  phone: "(min-width: 425px)",
+  tablet: "(min-width: 768px)",
+  laptop: "(min-width: 1024px)",
+  desktop: "(min-width: 1440px)",
+};
+
 export const { styled, css } = createStitches({
   theme: {
     space,
     sizes: space,
     colors: colors,
+    radii,
   },
+  media,
 });
