@@ -10,12 +10,17 @@ interface IntakeCardProps {
 
 const Card = styled("div", {
   display: "flex",
-  padding: "$10",
+  flexDirection: "column",
+  padding: "$6",
   borderRadius: "$md",
   backgroundColor: "$gray2",
-  width: "$full",
   gap: "$6",
   alignItems: "center",
+  "@desktop": {
+    width: "$full",
+    padding: "$10",
+    flexDirection: "row",
+  },
 });
 
 const iconContainer = (color: string) =>

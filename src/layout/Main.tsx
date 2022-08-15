@@ -9,16 +9,17 @@ interface LayoutProps {
 
 const Main = styled("main", {
   marginLeft: "$32",
+  height: "$full",
 });
 
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-        <NavBar />
-        <div>
-          <SideBar />
-          <Main>{children}</Main>
-        </div>
+      <NavBar />
+      <div>
+        <SideBar />
+        <Main>{children}</Main>
+      </div>
     </>
   );
 };

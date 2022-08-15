@@ -18,25 +18,42 @@ import { styled } from "@src/styles/system-styled";
 import AverageSessionTime from "@src/components/AverageSessionTime";
 import RadarPerformance from "@src/components/RadarPerformance";
 import { frenchKinds } from "@src/constants/constants";
+import ScoreProgression from "@src/components/ScoreProgression";
 
 const TopFlex = styled("div", {
   display: "flex",
   gap: "$8",
+  flexDirection: "column",
   marginTop: "$16",
+  marginBottom: "$16",
+  "@desktop": {
+    height: "$44rem",
+    flexDirection: "row",
+  },
 });
 
 const Stack = styled("div", {
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "row",
+  order: "1",
   gap: "$8",
+  "@desktop": {
+    justifyContent: "space-between",
+    flexDirection: "column",
+    order: "2",
+  },
 });
 
 const LeftPart = styled("div", {
   width: "54rem",
   height: "100%",
   display: "flex",
+  order: "2",
   flexDirection: "column",
   gap: "$8",
+  "@desktop": {
+    order: "1",
+  },
 });
 
 const RowStack = styled("div", {
@@ -52,7 +69,6 @@ const Home = () => {
   const [averageTime] = useAtom(userAverageSessions);
   const [performance] = useAtom(userPerformance);
   const user = data?.data.data;
-  console.log(performance?.data.data.data.sort((a, b) => b.value - a.value));
   return (
     <Container>
       <Suspense fallback={<p>Waiting for the data to load...</p>}>
@@ -76,6 +92,7 @@ const Home = () => {
                 // @ts-ignore
                 formatter={(value: string) => frenchKinds[value]}
               />
+              <ScoreProgression progression={user?.todayScore || 10} />
             </RowStack>
           </LeftPart>
           <Stack>
