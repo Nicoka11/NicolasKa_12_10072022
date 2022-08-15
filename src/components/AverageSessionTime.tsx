@@ -9,8 +9,9 @@ interface AverageSessionTimeProps {
 }
 
 const AverageSessionTime = ({ data }: AverageSessionTimeProps) => {
+  const Wrapper = WrapperBlock("#FF0000")
   return (
-    <WrapperBlock>
+    <Wrapper>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
@@ -67,7 +68,7 @@ const AverageSessionTime = ({ data }: AverageSessionTimeProps) => {
           </text>
         </LineChart>
       </ResponsiveContainer>
-    </WrapperBlock>
+    </Wrapper>
   );
 };
 

@@ -1,6 +1,11 @@
 import Container from "@src/components/Container";
 import { Suspense } from "react";
-import { userActivity, userAverageSessions, userData } from "@src/store";
+import {
+  userActivity,
+  userAverageSessions,
+  userData,
+  userPerformance,
+} from "@src/store";
 import { useAtom } from "jotai";
 import Heading from "@src/components/Heading";
 import DailyActivity from "@src/components/DailyActivity";
@@ -11,6 +16,8 @@ import { ReactComponent as Lipids } from "@src/assets/icons/food/lipids.svg";
 import IntakeCard from "@src/components/IntakeCard";
 import { styled } from "@src/styles/system-styled";
 import AverageSessionTime from "@src/components/AverageSessionTime";
+import RadarPerformance from "@src/components/RadarPerformance";
+import { frenchKinds } from "@src/constants/constants";
 
 const TopFlex = styled("div", {
   display: "flex",
@@ -43,8 +50,9 @@ const Home = () => {
   const [data] = useAtom(userData);
   const [daily] = useAtom(userActivity);
   const [averageTime] = useAtom(userAverageSessions);
+  const [performance] = useAtom(userPerformance);
   const user = data?.data.data;
-  console.log(averageTime);
+  console.log(performance?.data.data.data.sort((a, b) => b.value - a.value));
   return (
     <Container>
       <Suspense fallback={<p>Waiting for the data to load...</p>}>
@@ -58,6 +66,15 @@ const Home = () => {
             <RowStack>
               <AverageSessionTime
                 data={averageTime?.data.data.sessions || []}
+              />
+              <RadarPerformance
+                data={
+                  performance?.data.data.data.sort(
+                    (a, b) => a.value - b.value
+                  ) || []
+                }
+                // @ts-ignore
+                formatter={(value: string) => frenchKinds[value]}
               />
             </RowStack>
           </LeftPart>
