@@ -1,4 +1,5 @@
 import { createStitches } from "@stitches/react";
+import { gray, blue, red, green, yellow, pink } from "@radix-ui/colors";
 
 const space = {
   0: "0px",
@@ -48,6 +49,12 @@ const colors = {
   deepblack700: "#343447",
   deepblack800: "#201f2a",
   deepblack900: "#020203",
+  ...gray,
+  ...blue,
+  ...red,
+  ...green,
+  ...yellow,
+  ...pink,
 };
 
 const radii = {

@@ -1,5 +1,5 @@
 import { styled } from "@src/styles/system-styled";
-import logo from "/sport-see-full.svg";
+import logo from "@src/assets/sport-see-full.svg";
 
 const Header = styled("header", {
   display: "flex",
@@ -18,10 +18,10 @@ const Logo = styled("a", {
 
 const List = styled("ul", {
   display: "flex",
-  gap: "$8",
+  gap: "$3",
   color: "white",
   "@tablet": {
-    gap: "$12",
+    gap: "$6",
   },
   "@laptop": {
     gap: "$24",

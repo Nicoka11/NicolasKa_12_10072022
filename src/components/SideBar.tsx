@@ -11,6 +11,7 @@ const Box = styled("aside", {
   backgroundColor: "$deepblack900",
   position: "fixed",
   padding: "$8",
+  paddingTop: "$32",
   width: "$32",
   top: "0",
   left: "0",

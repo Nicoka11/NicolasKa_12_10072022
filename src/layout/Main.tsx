@@ -14,11 +14,11 @@ const Main = styled("main", {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <NavBar />
-      <div>
-        <SideBar />
-        <Main>{children}</Main>
-      </div>
+        <NavBar />
+        <div>
+          <SideBar />
+          <Main>{children}</Main>
+        </div>
     </>
   );
 };
