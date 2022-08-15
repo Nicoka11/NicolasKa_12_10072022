@@ -2,6 +2,7 @@ import { atom } from "jotai";
 import getUser, { Endpoints } from "@services/api";
 import {
   UserActivityData,
+  UserAverageTimeSessions,
   UserData,
   UserPerformanceData,
 } from "@src/types/endpoints";
@@ -13,7 +14,10 @@ export const userActivity = atom(async () =>
 );
 
 export const userAverageSessions = atom(async () =>
-  getUser({ userId: 12, endpoint: Endpoints.AverageSessions })
+  getUser<UserAverageTimeSessions>({
+    userId: 12,
+    endpoint: Endpoints.AverageSessions,
+  })
 );
 
 export const userPerformance = atom(async () =>

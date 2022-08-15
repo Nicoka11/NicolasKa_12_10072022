@@ -2,24 +2,18 @@ import { styled } from "@src/styles/system-styled";
 import { CustomTooltipProps } from "@src/types/utils";
 
 const Box = styled("div", {
-  padding: "$4",
-  backgroundColor: "#E60000",
-  color: "white",
-  display: "flex",
-  flexDirection: "column",
-  gap: "$4",
+  backgroundColor: "White",
+  padding: "$3",
 });
 
 const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <Box>
-        <p>{`${payload[0]?.value}kg`}</p>
-        <p>{`${payload[1]?.value}kCal`}</p>
+        <p>{`${payload[0]?.value}min`}</p>
       </Box>
     );
   }
-
   return null;
 };
 

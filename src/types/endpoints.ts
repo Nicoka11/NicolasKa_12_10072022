@@ -36,3 +36,11 @@ export interface UserActivityData {
     sessions: userActivitySession[];
   };
 }
+
+export type userAverageTimeSession = { day: number; sessionLength: number };
+export interface UserAverageTimeSessions {
+  data: {
+    userId: number;
+    sessions: userAverageTimeSession[];
+  };
+}

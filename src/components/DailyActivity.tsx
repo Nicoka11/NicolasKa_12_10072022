@@ -40,7 +40,14 @@ const DailyActivity = ({ data }: DailyActivityProps) => {
           barSize={7}
         >
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
-          <XAxis tickLine={false} dataKey="day" stroke="#9B9EAC" />
+          <XAxis
+            tickLine={false}
+            dataKey="day"
+            stroke="#9B9EAC"
+            tickFormatter={(data) =>
+              parseInt(data.split("-").slice(-1)).toString()
+            }
+          />
           <YAxis
             domain={["dataMin - 100", "dataMax + 100"]}
             hide={true}
@@ -62,7 +69,9 @@ const DailyActivity = ({ data }: DailyActivityProps) => {
             iconType="circle"
             align="right"
             color="#OOOOOO"
-            formatter={(value) => <span color="gray">{value}</span>}
+            formatter={(value) => (
+              <span style={{ color: "gray" }}>{value}</span>
+            )}
             verticalAlign="top"
           />
           <Bar
