@@ -1,5 +1,4 @@
 import Container from "@src/components/Container";
-import { Suspense } from "react";
 import {
   loadableUserData,
   userActivity,
@@ -68,9 +67,9 @@ const RowStack = styled("div", {
 const NoConnectionBlock = styled("section", {
   width: "$full",
   height: "50vh",
-  gap:"$6",
+  gap: "$6",
   display: "flex",
-  flexDirection:"column",
+  flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
 });
@@ -107,7 +106,9 @@ const Home = () => {
                   // @ts-ignore
                   formatter={(value: string) => frenchKinds[value]}
                 />
-                <ScoreProgression progression={user?.todayScore || 10} />
+                <ScoreProgression
+                  progression={user?.todayScore || user?.score || 10}
+                />
               </RowStack>
             </LeftPart>
             <Stack>
@@ -145,7 +146,7 @@ const Home = () => {
       ) : (
         <NoConnectionBlock>
           <NoConnection />
-          <h1>Cannot connect with our server, please try again later</h1>
+          <h1>Server Error</h1>
         </NoConnectionBlock>
       )}
     </Container>
