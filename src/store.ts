@@ -6,20 +6,24 @@ import {
   UserData,
   UserPerformanceData,
 } from "@src/types/endpoints";
+import { loadable } from "jotai/utils";
 
-export const userData = atom(async () => getUser<UserData>({ userId: 12 }));
+const userId = 12;
+
+export const userData = atom(async () => getUser<UserData>({ userId }));
+export const loadableUserData = loadable(userData);
 
 export const userActivity = atom(async () =>
-  getUser<UserActivityData>({ userId: 12, endpoint: Endpoints.Activity })
+  getUser<UserActivityData>({ userId, endpoint: Endpoints.Activity })
 );
 
 export const userAverageSessions = atom(async () =>
   getUser<UserAverageTimeSessions>({
-    userId: 12,
+    userId,
     endpoint: Endpoints.AverageSessions,
   })
 );
 
 export const userPerformance = atom(async () =>
-  getUser<UserPerformanceData>({ userId: 12, endpoint: Endpoints.Performance })
+  getUser<UserPerformanceData>({ userId, endpoint: Endpoints.Performance })
 );
