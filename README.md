@@ -31,6 +31,6 @@ For the frontend :
 - `pnpm install` to install deps
 - `pnpm dev` to start the app in watch mode.
 
-*The app will be accessible on port 5173* -> [here](localhost:5173).
+*The app will be accessible on port 5173*
 
 Hope you will enjoi it, thank you :)
