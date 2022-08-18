@@ -25,7 +25,9 @@ For the backend :
 - `pnpm install` to install deps
 - `pnpm dev` to start the server (running on port 3000 by default)
 
-*At this point your server should be running.*
+*At this point your server should be running.*<br/>
+If you want to have additional info about the backend [click here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
+
 
 For the frontend : 
 - `pnpm install` to install deps
