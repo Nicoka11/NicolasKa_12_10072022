@@ -47,6 +47,15 @@ const Name = styled("p", {
   fontWeight: "400",
   color: "$gray9",
 });
+/**
+ * Base on the Bar chart from 'recharts', displaying the user's daily activity results.
+ *
+ * @component
+ * @example
+ *
+ * <IntakeCard icon={<Icon/>} bgIcon="$yellow3" intakeAmount={5} unit="kCal" name="calories" />
+ *
+ */
 const IntakeCard = ({
   icon,
   bgIcon,

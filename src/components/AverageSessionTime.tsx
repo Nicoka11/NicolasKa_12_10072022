@@ -9,6 +9,16 @@ interface AverageSessionTimeProps {
   data: userAverageTimeSession[];
 }
 
+  /**
+ * Base on the Line chart from 'recharts', displaying the duration of sport sessions for each day
+ *
+ * @component
+ * @example
+ * const data = [{day: 1, sessionLength:60}, {day: 2, sessionLength:85}]
+ *  * return (
+ *   <AverageSessionTime data={data}/>
+ * )
+ */
 const AverageSessionTime = ({ data }: AverageSessionTimeProps) => {
   const Wrapper = WrapperBlock("#FF0000");
   return (

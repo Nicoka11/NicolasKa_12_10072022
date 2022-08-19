@@ -21,7 +21,14 @@ const Button = (color = "Red") =>
       backgroundColor: "$deepblack50",
     },
   });
-
+/**
+ * Navigation button, by default the icon color will be red
+ *
+ * @component
+ * @example
+ * 
+ *   <IconButton href="/" icon={src: "/whatever.svg", alt:"whatever", color:"$pink5"}/>
+ */
 const IconButton = ({ href, icon }: IconButtonProps) => {
   const Btn = Button(icon.color);
   return (

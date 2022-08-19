@@ -24,6 +24,16 @@ const Box = styled("section", {
   borderRadius: "$md",
 });
 
+/**
+ * Base on the Bar chart from 'recharts', displaying the user's daily activity results.
+ *
+ * @component
+ * @example
+ * const data = [{day: '2020-11-01', kilogram:70, calories:1920}, {day: '2020-11-02', kilogram:71, calories:1670}]
+ *  * return (
+ *   <DailyActivity data={data}/>
+ * )
+ */
 const DailyActivity = ({ data }: DailyActivityProps) => {
   return (
     <Box>
