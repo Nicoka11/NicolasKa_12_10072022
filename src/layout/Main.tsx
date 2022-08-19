@@ -1,5 +1,6 @@
 import NavBar from "@src/components/NavBar";
 import SideBar from "@src/components/SideBar";
+import PropTypes from "prop-types";
 import { styled } from "@src/styles/system-styled";
 import { ReactNode } from "react";
 
@@ -22,6 +23,10 @@ const Layout = ({ children }: LayoutProps) => {
       </div>
     </>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.element,
 };
 
 export default Layout;

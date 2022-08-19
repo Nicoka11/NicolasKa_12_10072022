@@ -1,4 +1,5 @@
 import { userPerformance } from "@src/types/endpoints";
+import PropTypes from "prop-types";
 import {
   ResponsiveContainer,
   RadarChart,
@@ -35,4 +36,15 @@ const RadarPerformance = ({ data, formatter }: AverageSessionTimeProps) => {
     </Wrapper>
   );
 };
+
+RadarPerformance.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number,
+      kind: PropTypes.number,
+    })
+  ).isRequired,
+  formatter: PropTypes.func.isRequired
+};
+
 export default RadarPerformance;

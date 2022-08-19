@@ -1,5 +1,6 @@
 import Center from "@src/components/Center";
 import WrapperBlock from "@src/components/WrapperBlock";
+import PropTypes from "prop-types";
 
 interface ScoreProgressionProps {
   progression?: number;
@@ -81,6 +82,10 @@ const ScoreProgression = ({ progression = 30 }: ScoreProgressionProps) => {
       </Center>
     </Wrapper>
   );
+};
+
+ScoreProgression.propTypes = {
+  progression: PropTypes.number,
 };
 
 export default ScoreProgression;

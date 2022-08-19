@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import CustomTooltip from "@src/components/tooltips/DailyActivityTooltip";
 import { userActivitySession } from "@src/types/endpoints";
+import PropTypes from "prop-types";
 import { styled } from "@src/styles/system-styled";
 
 interface DailyActivityProps {
@@ -101,6 +102,16 @@ const DailyActivity = ({ data }: DailyActivityProps) => {
       </ResponsiveContainer>
     </Box>
   );
+};
+
+DailyActivity.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.string,
+      kilogram: PropTypes.number,
+      calories: PropTypes.number,
+    })
+  ).isRequired,
 };
 
 export default DailyActivity;

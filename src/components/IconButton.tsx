@@ -1,4 +1,5 @@
 import { styled } from "@src/styles/system-styled";
+import PropTypes from "prop-types";
 
 interface IconButtonProps {
   href: string;
@@ -29,4 +30,14 @@ const IconButton = ({ href, icon }: IconButtonProps) => {
     </Btn>
   );
 };
+
+IconButton.propTypes = {
+  href: PropTypes.string.isRequired,
+  icon: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    color: PropTypes.string,
+  }),
+};
+
 export default IconButton;

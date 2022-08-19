@@ -1,4 +1,5 @@
 import { styled } from "@src/styles/system-styled";
+import PropTypes from "prop-types";
 
 interface IntakeCardProps {
   icon: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
@@ -66,6 +67,14 @@ const IntakeCard = ({
       </div>
     </Card>
   );
+};
+
+IntakeCard.propTypes = {
+  icon: PropTypes.element.isRequired,
+  bgIcon: PropTypes.string.isRequired,
+  intakeAmount: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default IntakeCard;

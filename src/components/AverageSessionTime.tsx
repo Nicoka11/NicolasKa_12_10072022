@@ -3,13 +3,14 @@ import { ResponsiveContainer, LineChart, XAxis, Line, Tooltip } from "recharts";
 import CustomTooltip from "@src/components/tooltips/AverageSessionTimeTooltip";
 import numberToDay from "@src/utils/numberToDay";
 import WrapperBlock from "@src/components/WrapperBlock";
+import PropTypes from "prop-types";
 
 interface AverageSessionTimeProps {
   data: userAverageTimeSession[];
 }
 
 const AverageSessionTime = ({ data }: AverageSessionTimeProps) => {
-  const Wrapper = WrapperBlock("#FF0000")
+  const Wrapper = WrapperBlock("#FF0000");
   return (
     <Wrapper>
       <ResponsiveContainer width="100%" height="100%">
@@ -70,6 +71,15 @@ const AverageSessionTime = ({ data }: AverageSessionTimeProps) => {
       </ResponsiveContainer>
     </Wrapper>
   );
+};
+
+AverageSessionTime.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.number,
+      sessionLength: PropTypes.number,
+    })
+  ).isRequired,
 };
 
 export default AverageSessionTime;

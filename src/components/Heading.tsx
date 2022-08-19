@@ -1,4 +1,5 @@
 import { styled } from "@src/styles/system-styled";
+import PropTypes from "prop-types";
 
 const H1 = styled("h1", {
   fontWeight: "500",
@@ -20,6 +21,11 @@ const Heading = ({ name, description }: HeadingProps) => {
       <p>{description}</p>
     </header>
   );
+};
+
+Heading.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default Heading;
