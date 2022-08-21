@@ -35,4 +35,6 @@ For the frontend :
 
 *The app will be accessible on port 5173*
 
+### For further details [click here](https://excalidraw.com/#json=4XLfL_pfFyMsBUYjFlCpF,e_AXRrwcoTAEq9vCMAlyFQ)
+
 Hope you will enjoi it, thank you :)
