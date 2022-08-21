@@ -19,7 +19,7 @@ export interface getUserParams {
 /**
  * returns a promise containing data from the sportsee backend servers
  * @constructor
- * @param {Object} params
+ * @param {Object} params - the params used to create the query
  * @param {number} params.userId - ID of the user.
  * @param {endpoints} params.endpoint - Specific endpoint you want to get the data from.
  */
