@@ -12,8 +12,8 @@ export interface UserData {
       firstName: string;
       lastName: string;
     };
-    todayScore: number;
-    score: number;
+    todayScore?: number;
+    score?: number;
   };
 }
 

@@ -20,6 +20,12 @@ import AverageSessionTime from "@src/components/AverageSessionTime";
 import RadarPerformance from "@src/components/RadarPerformance";
 import { frenchKinds } from "@src/constants/constants";
 import ScoreProgression from "@src/components/ScoreProgression";
+import {
+  USER_ACTIVITY,
+  USER_AVERAGE_SESSIONS,
+  USER_MAIN_DATA,
+  USER_PERFORMANCE,
+} from "@src/services/mockedData";
 
 const TopFlex = styled("div", {
   display: "flex",
@@ -79,35 +85,53 @@ const Home = () => {
   const [daily] = useAtom(userActivity);
   const [averageTime] = useAtom(userAverageSessions);
   const [performance] = useAtom(userPerformance);
-  const user = data?.data.data;
   const [loadedData] = useAtom(loadableUserData);
+  const isDataMocked = true;
+
+  console.log();
+
+  const loadedStatus = isDataMocked
+    ? { state: "hasData", data: true }
+    : loadedData;
+
+  const selectedUserData = isDataMocked ? USER_MAIN_DATA.data : data?.data.data;
+
+  const dailyData = isDataMocked
+    ? USER_ACTIVITY.data.sessions
+    : daily?.data.data.sessions;
+
+  const averageTimeData = isDataMocked
+    ? USER_AVERAGE_SESSIONS.data.sessions
+    : averageTime?.data.data.sessions;
+
+  const performanceData = isDataMocked
+    ? USER_PERFORMANCE.data.data
+    : performance?.data.data.data.sort((a, b) => a.value - b.value);
 
   return (
     <Container>
-      {loadedData.state === "hasData" && loadedData.data !== undefined ? (
+      {loadedStatus.state === "hasData" && loadedStatus.data !== undefined ? (
         <>
           <Heading
-            name={user?.userInfos.firstName || ""}
+            name={selectedUserData?.userInfos.firstName || ""}
             description="Félicitation ! Vous avez explosé vos objectifs hier 👏"
           />
           <TopFlex>
             <LeftPart>
-              <DailyActivity data={daily?.data.data.sessions || []} />
+              <DailyActivity data={dailyData || []} />
               <RowStack>
-                <AverageSessionTime
-                  data={averageTime?.data.data.sessions || []}
-                />
+                <AverageSessionTime data={averageTimeData || []} />
                 <RadarPerformance
-                  data={
-                    performance?.data.data.data.sort(
-                      (a, b) => a.value - b.value
-                    ) || []
-                  }
+                  data={performanceData || []}
                   // @ts-ignore
                   formatter={(value: string) => frenchKinds[value]}
                 />
                 <ScoreProgression
-                  progression={user?.todayScore || user?.score || 10}
+                  progression={
+                    selectedUserData?.todayScore ||
+                    selectedUserData?.score ||
+                    10
+                  }
                 />
               </RowStack>
             </LeftPart>
@@ -115,28 +139,28 @@ const Home = () => {
               <IntakeCard
                 icon={<Calories className="image" />}
                 bgIcon="$red3"
-                intakeAmount={user?.keyData.calorieCount || 1}
+                intakeAmount={selectedUserData?.keyData.calorieCount || 1}
                 unit="kCal"
                 name="Calories"
               />
               <IntakeCard
                 icon={<Proteins className="image" />}
                 bgIcon="$blue3"
-                intakeAmount={user?.keyData.proteinCount || 1}
+                intakeAmount={selectedUserData?.keyData.proteinCount || 1}
                 unit="g"
                 name="Proteines"
               />
               <IntakeCard
                 icon={<CarboHydrate className="image" />}
                 bgIcon="$yellow3"
-                intakeAmount={user?.keyData.carbohydrateCount || 1}
+                intakeAmount={selectedUserData?.keyData.carbohydrateCount || 1}
                 unit="g"
                 name="Glucides"
               />
               <IntakeCard
                 icon={<Lipids className="image" />}
                 bgIcon="$pink3"
-                intakeAmount={user?.keyData.lipidCount || 1}
+                intakeAmount={selectedUserData?.keyData.lipidCount || 1}
                 unit="g"
                 name="Lipides"
               />
