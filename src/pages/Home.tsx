@@ -42,8 +42,6 @@ const Home = () => {
   const [loadedData] = useAtom(loadableUserData);
   const isDataMocked = true;
 
-  console.log();
-
   const loadedStatus = isDataMocked
     ? { state: "hasData", data: true }
     : loadedData;
