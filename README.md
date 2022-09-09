@@ -35,6 +35,8 @@ For the frontend :
 
 *The app will be accessible on port 5173*
 
+To switch from real to mocked data, of change the user id you can change the variables in `/env/.env` of the frontend project.
+
 ### For further details [click here](https://excalidraw.com/#json=4XLfL_pfFyMsBUYjFlCpF,e_AXRrwcoTAEq9vCMAlyFQ)
 
 Hope you will enjoi it, thank you :)
