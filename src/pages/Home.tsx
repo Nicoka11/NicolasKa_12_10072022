@@ -1,9 +1,4 @@
 import Container from "@src/components/Container";
-import {
-  loadableUserData,
-  QueryKeys,
-} from "@src/store";
-import { useAtom } from "jotai";
 import Heading from "@src/components/Heading";
 import DailyActivity from "@src/components/DailyActivity";
 import { ReactComponent as Calories } from "@src/assets/icons/food/calories.svg";
@@ -30,7 +25,7 @@ import {
   NoConnectionBlock,
 } from "./Home.styles";
 import { useParams } from "react-router-dom";
-import getUser, { Endpoints } from "@src/services/api";
+import getUser, { Endpoints, QueryKeys } from "@src/services/api";
 import {
   UserActivityData,
   UserAverageTimeSessions,
@@ -40,9 +35,9 @@ import {
 import { useQuery } from "@tanstack/react-query";
 
 const Home = () => {
-  const { id } = useParams();
+  const { id: userId } = useParams();
 
-  if (id === undefined) {
+  if (userId === undefined) {
     return (
       <Container>
         <NoConnection />
@@ -50,7 +45,6 @@ const Home = () => {
       </Container>
     );
   }
-  const userId = id;
   const { data: data } = useQuery([QueryKeys.UserData], () =>
     getUser<UserData>({ userId })
   );
@@ -66,9 +60,9 @@ const Home = () => {
   const { data: performance } = useQuery([QueryKeys.Performance], () =>
     getUser<UserPerformanceData>({ userId, endpoint: Endpoints.Performance })
   );
-  const [loadedData] = useAtom(loadableUserData);
   const isDataMocked = import.meta.env.VITE_MOCK_DATA === "true";
 
+  const loadedData = { state: "hasData", data: true };
   const loadedStatus = isDataMocked
     ? { state: "hasData", data: true }
     : loadedData;
@@ -89,7 +83,7 @@ const Home = () => {
 
   return (
     <Container>
-      {loadedStatus.state === "hasData" && loadedStatus.data !== undefined ? (
+      {data?.status === 200 ? (
         <>
           <Heading
             name={selectedUserData?.userInfos.firstName || ""}

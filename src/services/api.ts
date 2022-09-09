@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export enum QueryKeys {
+  UserData = "user-data",
+  Activity = "user-daily",
+  AverageSessions = "user-average",
+  Performance = "user-performance",
+}
+
 export enum Endpoints {
   User = "",
   Activity = "activity",
