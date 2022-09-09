@@ -12,7 +12,7 @@ const api = axios.create({
 });
 
 export interface getUserParams {
-  userId: number;
+  userId: number | string;
   endpoint?: Endpoints;
 }
 

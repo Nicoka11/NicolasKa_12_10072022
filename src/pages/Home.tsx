@@ -1,10 +1,7 @@
 import Container from "@src/components/Container";
 import {
   loadableUserData,
-  userActivity,
-  userAverageSessions,
-  userData,
-  userPerformance,
+  QueryKeys,
 } from "@src/store";
 import { useAtom } from "jotai";
 import Heading from "@src/components/Heading";
@@ -32,12 +29,43 @@ import {
   RowStack,
   NoConnectionBlock,
 } from "./Home.styles";
+import { useParams } from "react-router-dom";
+import getUser, { Endpoints } from "@src/services/api";
+import {
+  UserActivityData,
+  UserAverageTimeSessions,
+  UserData,
+  UserPerformanceData,
+} from "@src/types/endpoints";
+import { useQuery } from "@tanstack/react-query";
 
 const Home = () => {
-  const [data] = useAtom(userData);
-  const [daily] = useAtom(userActivity);
-  const [averageTime] = useAtom(userAverageSessions);
-  const [performance] = useAtom(userPerformance);
+  const { id } = useParams();
+
+  if (id === undefined) {
+    return (
+      <Container>
+        <NoConnection />
+        <p>User not found</p>
+      </Container>
+    );
+  }
+  const userId = id;
+  const { data: data } = useQuery([QueryKeys.UserData], () =>
+    getUser<UserData>({ userId })
+  );
+  const { data: daily } = useQuery([QueryKeys.Activity], () =>
+    getUser<UserActivityData>({ userId, endpoint: Endpoints.Activity })
+  );
+  const { data: averageTime } = useQuery([QueryKeys.AverageSessions], () =>
+    getUser<UserAverageTimeSessions>({
+      userId,
+      endpoint: Endpoints.AverageSessions,
+    })
+  );
+  const { data: performance } = useQuery([QueryKeys.Performance], () =>
+    getUser<UserPerformanceData>({ userId, endpoint: Endpoints.Performance })
+  );
   const [loadedData] = useAtom(loadableUserData);
   const isDataMocked = import.meta.env.VITE_MOCK_DATA === "true";
 
