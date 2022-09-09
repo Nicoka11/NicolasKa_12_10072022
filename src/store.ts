@@ -8,7 +8,7 @@ import {
 } from "@src/types/endpoints";
 import { loadable } from "jotai/utils";
 
-const userId = 12;
+const userId = import.meta.env.VITE_LOGGED_USER;
 
 export const userData = atom(async () => getUser<UserData>({ userId }));
 export const loadableUserData = loadable(userData);

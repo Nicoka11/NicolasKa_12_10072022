@@ -9,16 +9,16 @@ export const USER_MAIN_DATA: UserData = {
   data: {
     userId: 12,
     userInfos: {
-      firstName: "Karl",
-      lastName: "Dovineau",
+      firstName: "Nicolas",
+      lastName: "Yoshi",
       age: 31,
     },
     todayScore: 0.12,
     keyData: {
-      calorieCount: 3500,
-      proteinCount: 3200,
-      carbohydrateCount: 350,
-      lipidCount: 100,
+      calorieCount: 200,
+      proteinCount: 200,
+      carbohydrateCount: 200,
+      lipidCount: 200,
     },
   },
 };

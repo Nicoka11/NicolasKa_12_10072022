@@ -15,7 +15,6 @@ import { ReactComponent as CarboHydrate } from "@src/assets/icons/food/carbohydr
 import { ReactComponent as Lipids } from "@src/assets/icons/food/lipids.svg";
 import { ReactComponent as NoConnection } from "@src/assets/icons/no-connection.svg";
 import IntakeCard from "@src/components/IntakeCard";
-import { styled } from "@src/styles/system-styled";
 import AverageSessionTime from "@src/components/AverageSessionTime";
 import RadarPerformance from "@src/components/RadarPerformance";
 import { frenchKinds } from "@src/constants/constants";
@@ -40,7 +39,7 @@ const Home = () => {
   const [averageTime] = useAtom(userAverageSessions);
   const [performance] = useAtom(userPerformance);
   const [loadedData] = useAtom(loadableUserData);
-  const isDataMocked = true;
+  const isDataMocked = import.meta.env.VITE_MOCK_DATA === "true";
 
   const loadedStatus = isDataMocked
     ? { state: "hasData", data: true }
