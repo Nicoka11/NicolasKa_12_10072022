@@ -34,8 +34,9 @@ For the frontend :
 - `pnpm dev` to start the app in watch mode.
 
 *The app will be accessible on port 5173*
+(Users are accessible on `localhost:5173/*USERID*`)
 
-To switch from real to mocked data, or change the user id you can change the variables in `/env/.env` of the frontend project.
+To switch from real to mocked data, you can change the variable in `/env/.env` of the frontend project.
 
 ### For further details [click here](https://excalidraw.com/#json=4XLfL_pfFyMsBUYjFlCpF,e_AXRrwcoTAEq9vCMAlyFQ)
 
